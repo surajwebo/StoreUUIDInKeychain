@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Security/Security.h>
+#import "FDKeychain.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+    __weak IBOutlet UILabel *lblUUID;
+}
 
 @end

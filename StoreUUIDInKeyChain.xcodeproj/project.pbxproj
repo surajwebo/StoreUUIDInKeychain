@@ -21,6 +21,8 @@
 		69A78F9B1890E9E600B531BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A78F7D1890E9E600B531BF /* UIKit.framework */; };
 		69A78FA31890E9E600B531BF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69A78FA11890E9E600B531BF /* InfoPlist.strings */; };
 		69A78FA51890E9E600B531BF /* StoreUUIDInKeyChainTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A78FA41890E9E600B531BF /* StoreUUIDInKeyChainTests.m */; };
+		69A78FB11890EA2D00B531BF /* FDKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A78FB01890EA2D00B531BF /* FDKeychain.m */; };
+		69A78FB31890EA5200B531BF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A78FB21890EA5200B531BF /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		69A78FA01890E9E600B531BF /* StoreUUIDInKeyChainTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StoreUUIDInKeyChainTests-Info.plist"; sourceTree = "<group>"; };
 		69A78FA21890E9E600B531BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		69A78FA41890E9E600B531BF /* StoreUUIDInKeyChainTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoreUUIDInKeyChainTests.m; sourceTree = "<group>"; };
+		69A78FAE1890EA2D00B531BF /* FDNullOrEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDNullOrEmpty.h; sourceTree = "<group>"; };
+		69A78FAF1890EA2D00B531BF /* FDKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDKeychain.h; sourceTree = "<group>"; };
+		69A78FB01890EA2D00B531BF /* FDKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDKeychain.m; sourceTree = "<group>"; };
+		69A78FB21890EA5200B531BF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69A78FB31890EA5200B531BF /* Security.framework in Frameworks */,
 				69A78F7C1890E9E600B531BF /* CoreGraphics.framework in Frameworks */,
 				69A78F7E1890E9E600B531BF /* UIKit.framework in Frameworks */,
 				69A78F7A1890E9E600B531BF /* Foundation.framework in Frameworks */,
@@ -101,6 +108,7 @@
 		69A78F781890E9E600B531BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				69A78FB21890EA5200B531BF /* Security.framework */,
 				69A78F791890E9E600B531BF /* Foundation.framework */,
 				69A78F7B1890E9E600B531BF /* CoreGraphics.framework */,
 				69A78F7D1890E9E600B531BF /* UIKit.framework */,
@@ -117,6 +125,7 @@
 				69A78F8B1890E9E600B531BF /* Main.storyboard */,
 				69A78F8E1890E9E600B531BF /* ViewController.h */,
 				69A78F8F1890E9E600B531BF /* ViewController.m */,
+				69A78FB41890EA5E00B531BF /* Keychain Library */,
 				69A78F911890E9E600B531BF /* Images.xcassets */,
 				69A78F801890E9E600B531BF /* Supporting Files */,
 			);
@@ -150,6 +159,16 @@
 				69A78FA11890E9E600B531BF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		69A78FB41890EA5E00B531BF /* Keychain Library */ = {
+			isa = PBXGroup;
+			children = (
+				69A78FAE1890EA2D00B531BF /* FDNullOrEmpty.h */,
+				69A78FAF1890EA2D00B531BF /* FDKeychain.h */,
+				69A78FB01890EA2D00B531BF /* FDKeychain.m */,
+			);
+			name = "Keychain Library";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69A78F901890E9E600B531BF /* ViewController.m in Sources */,
+				69A78FB11890EA2D00B531BF /* FDKeychain.m in Sources */,
 				69A78F8A1890E9E600B531BF /* AppDelegate.m in Sources */,
 				69A78F861890E9E600B531BF /* main.m in Sources */,
 			);
@@ -376,11 +396,13 @@
 		69A78FA91890E9E600B531BF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoreUUIDInKeyChain/StoreUUIDInKeyChain-Prefix.pch";
 				INFOPLIST_FILE = "StoreUUIDInKeyChain/StoreUUIDInKeyChain-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -389,11 +411,13 @@
 		69A78FAA1890E9E600B531BF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoreUUIDInKeyChain/StoreUUIDInKeyChain-Prefix.pch";
 				INFOPLIST_FILE = "StoreUUIDInKeyChain/StoreUUIDInKeyChain-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
